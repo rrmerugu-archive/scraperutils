@@ -1,0 +1,12 @@
+def mongo_get_object_or_create(Klass, **kwargs):
+    try:
+        return Klass.objects.get(**kwargs), False
+    except:
+        return Klass(**kwargs).save(), True
+
+
+def mongo_get_object_or_none(Klass, **kwargs):
+    try:
+        return Klass.objects.get(**kwargs)
+    except:
+        return None
